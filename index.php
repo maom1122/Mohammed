@@ -1,63 +1,135 @@
+<?php
+// بياناتك الشخصية - يمكنك تعديلها بسهولة من هنا
+$name = "محمد الزبيدي";
+$job_title = "مطور ويب | مصمم إبداعي";
+$bio = "أهلاً بك في عالمي الرقمي، حيث يلتقي الإبداع بالبرمجة لبناء تجارب مستخدم فريدة.";
+
+// روابط التواصل الاجتماعي (أضف روابطك هنا)
+$social_links = [
+    ['icon' => 'fab fa-twitter', 'link' => 'https://twitter.com/your-username'],
+    ['icon' => 'fab fa-instagram', 'link' => 'https://instagram.com/your-username'],
+    ['icon' => 'fab fa-linkedin-in', 'link' => 'https://linkedin.com/in/your-username'],
+    ['icon' => 'fab fa-github', 'link' => 'https://github.com/your-username'],
+    ['envelope' => 'fas fa-envelope', 'link' => 'mailto:mohammed@example.com']
+];
+?>
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محمد الزبيدي | تأجير قوة المعالجة GPU</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <title><?php echo $name; ?> | الصفحة الشخصية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --text-color: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            /* الخلفية المتحركة */
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            max-width: 400px;
+            width: 90%;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.5);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        h1 { margin: 10px 0; font-size: 2rem; }
+        p.title { font-weight: bold; color: #ffd700; margin-bottom: 15px; }
+        p.bio { font-size: 0.9rem; line-height: 1.6; margin-bottom: 30px; opacity: 0.9; }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: #fff;
+            color: #e73c7e;
+            transform: scale(1.2) rotate(360deg);
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="logo">M. ALZUBAIDI <span>GPU CLOUD</span></div>
-            <ul>
-                <li><a href="#stats">الإحصائيات</a></li>
-                <li><a href="#inventory">الأسطول</a></li>
-                <li><a href="#contact">تواصل معي</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="card">
+        <img src="https://via.placeholder.com/150" alt="محمد الزبيدي" class="profile-img">
+        
+        <h1><?php echo $name; ?></h1>
+        <p class="title"><?php echo $job_title; ?></p>
+        <p class="bio"><?php echo $bio; ?></p>
 
-    <section class="hero">
-        <h1>مستقبل الحوسبة السحابية بين يديك</h1>
-        <p>تأجير أقوى كروت الشاشة لمهام الذكاء الاصطناعي والرندر بأسعار تنافسية.</p>
-        <div class="main-stats">
-            <div class="stat-box"><span>23</span> كرت شاشة</div>
-            <div class="stat-box"><span>99.9%</span> وقت التشغيل</div>
+        <div class="social-icons">
+            <?php foreach ($social_links as $social): ?>
+                <?php 
+                    $icon = isset($social['icon']) ? $social['icon'] : $social['envelope'];
+                ?>
+                <a href="<?php echo $social['link']; ?>" target="_blank">
+                    <i class="<?php echo $icon; ?>"></i>
+                </a>
+            <?php endforeach; ?>
         </div>
-    </section>
-
-    <section id="inventory" class="inventory">
-        <h2>أسطول الكروت الحالي</h2>
-        <div class="cards-grid">
-            <div class="card-type high-end">
-                <div class="badge">الأكثر طلباً</div>
-                <h3>NVIDIA RTX 5060</h3>
-                <p class="count">16 كرت متوفر</p>
-                <ul>
-                    <li>جيل Blackwell الحديث</li>
-                    <li>مثالي للذكاء الاصطناعي</li>
-                    <li>كفاءة طاقة عالية</li>
-                </ul>
-            </div>
-
-            <div class="card-type">
-                <h3>NVIDIA RTX 3060</h3>
-                <p class="count">7 كروت متوفرة</p>
-                <ul>
-                    <li>أداء مستقر 24/7</li>
-                    <li>مثالي للتعدين والرندر</li>
-                    <li>سعر تأجير اقتصادي</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>جميع الحقوق محفوظة © 2026 | محمد الزبيدي</p>
-    </footer>
+    </div>
 
 </body>
 </html>
