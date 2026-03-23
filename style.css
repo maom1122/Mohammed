@@ -1,0 +1,110 @@
+:root {
+    --main-bg: #0b0e14;
+    --card-bg: #161b22;
+    --accent-color: #76b900; /* لون نيفيديا */
+    --text-color: #e6edf3;
+}
+
+body {
+    background-color: var(--main-bg);
+    color: var(--text-color);
+    font-family: 'Tajawal', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: 20px 5%;
+    background: rgba(11, 14, 20, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo span { color: var(--accent-color); }
+
+nav ul { display: flex; list-style: none; }
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover { color: var(--accent-color); }
+
+.hero {
+    text-align: center;
+    padding: 100px 5%;
+    background: linear-gradient(to bottom, #0b0e14, #161b22);
+}
+
+.hero h1 { font-size: 3rem; margin-bottom: 20px; }
+
+.main-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.stat-box {
+    background: var(--card-bg);
+    padding: 20px 40px;
+    border-radius: 15px;
+    border: 1px solid var(--accent-color);
+}
+
+.stat-box span {
+    display: block;
+    font-size: 2rem;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.inventory { padding: 80px 5%; text-align: center; }
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.card-type {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    position: relative;
+    transition: 0.4s;
+}
+
+.card-type:hover { transform: translateY(-10px); }
+
+.high-end { border: 2px solid var(--accent-color); }
+
+.badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--accent-color);
+    color: black;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.count { font-size: 1.2rem; color: var(--accent-color); }
+
+ul { text-align: right; padding-right: 20px; margin-top: 20px; }
